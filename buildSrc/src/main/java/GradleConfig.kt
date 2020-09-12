@@ -20,6 +20,8 @@ object AndroidConfig {
 }
 
 object Dependencies {
+    private const val GLIDE_VER = "4.11.0"
+
     const val KOTLIN_STDLIB = "org.jetbrains.kotlin:kotlin-stdlib:${Version.KOTLIN}"
 
     const val MATERIAL = "com.google.android.material:material:1.2.1"
@@ -29,6 +31,9 @@ object Dependencies {
     const val COROUTINE = "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.9"
 
     const val TIMBER = "com.jakewharton.timber:timber:4.7.1"
+
+    const val GLIDE = "com.github.bumptech.glide:glide:$GLIDE_VER"
+    const val GLIDE_COMPILER = "com.github.bumptech.glide:compiler:$GLIDE_VER"
 }
 
 object TestDependencies {
@@ -50,6 +55,7 @@ object JetpackDependencies {
     const val LIFECYCLE_VIEWMODEL_KTX = "androidx.lifecycle:lifecycle-viewmodel-ktx:$LIFECYCLE_VER"
 
     const val ACTIVITY_KTX = "androidx.activity:activity-ktx:1.2.0-alpha03"
+    const val FRAGMENT_KTX = "androidx.fragment:fragment-ktx:1.3.0-alpha03"
 }
 
 object NetworkDependencies {

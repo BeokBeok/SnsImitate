@@ -51,6 +51,10 @@ dependencies {
     implementation Dependencies.COROUTINE
 
     implementation JetpackDependencies.ACTIVITY_KTX
+    implementation JetpackDependencies.FRAGMENT_KTX
+
+    implementation Dependencies.GLIDE
+    kapt Dependencies.GLIDE_COMPILER
 
     implementation Dependencies.TIMBER
 }
