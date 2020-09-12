@@ -6,7 +6,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".MainActivity">
+        tools:context=".home.HomeActivity">
 
         <androidx.appcompat.widget.Toolbar
             android:layout_width="0dp"
@@ -21,17 +21,17 @@
                 android:padding="4dp">
 
                 <Button
-                    android:id="@+id/btn_main_login"
+                    android:id="@+id/btn_home_login"
                     style="?android:buttonBarButtonStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/title_login"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@id/btn_main_sign_up"
+                    app:layout_constraintEnd_toStartOf="@id/btn_home_sign_up"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <Button
-                    android:id="@+id/btn_main_sign_up"
+                    android:id="@+id/btn_home_sign_up"
                     style="?android:buttonBarButtonStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -41,7 +41,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <Button
-                    android:id="@+id/btn_main_logout"
+                    android:id="@+id/btn_home_logout"
                     style="?android:buttonBarButtonStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

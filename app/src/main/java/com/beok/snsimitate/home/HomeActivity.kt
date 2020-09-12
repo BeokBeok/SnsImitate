@@ -1,14 +1,15 @@
-package com.beok.snsimitate
+package com.beok.snsimitate.home
 
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.core.view.isVisible
 import com.beok.common.base.BaseActivity
+import com.beok.snsimitate.R
 import com.beok.snsimitate.auth.AuthActivity
-import com.beok.snsimitate.databinding.ActivityMainBinding
+import com.beok.snsimitate.databinding.ActivityHomeBinding
 
-class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
+class HomeActivity : BaseActivity<ActivityHomeBinding>(R.layout.activity_home) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,21 +26,21 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
     }
 
     private fun setupClickListener() {
-        binding.btnMainLogin.setOnClickListener {
+        binding.btnHomeLogin.setOnClickListener {
             startActivityForResult(AuthActivity.newIntent(this, isLogin = true), REQ_AUTH)
         }
-        binding.btnMainSignUp.setOnClickListener {
+        binding.btnHomeSignUp.setOnClickListener {
             startActivityForResult(AuthActivity.newIntent(this, isLogin = false), REQ_AUTH)
         }
-        binding.btnMainLogout.setOnClickListener {
+        binding.btnHomeLogout.setOnClickListener {
             toggleLogoutComponent(false)
         }
     }
 
     private fun toggleLogoutComponent(isOn: Boolean) {
-        binding.btnMainSignUp.isVisible = !isOn
-        binding.btnMainLogin.isVisible = !isOn
-        binding.btnMainLogout.isVisible = isOn
+        binding.btnHomeSignUp.isVisible = !isOn
+        binding.btnHomeLogin.isVisible = !isOn
+        binding.btnHomeLogout.isVisible = isOn
     }
 
     companion object {
