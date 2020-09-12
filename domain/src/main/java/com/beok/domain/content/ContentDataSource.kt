@@ -7,5 +7,5 @@ interface ContentDataSource {
 
     suspend fun getHome(): Result<HomeResponse>
 
-    suspend fun getCards(): Result<CardsResponse>
+    suspend fun getCards(page: Int = 1, perPage: Int = 20): Result<CardsResponse>
 }

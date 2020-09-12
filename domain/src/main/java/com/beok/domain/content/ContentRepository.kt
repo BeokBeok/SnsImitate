@@ -16,7 +16,8 @@ class ContentRepository @Inject constructor(
         runCatching { contentService.getHome() }
     }
 
-    override suspend fun getCards(): Result<CardsResponse> = withContext(ioDispatcher) {
-        runCatching { contentService.getCards() }
-    }
+    override suspend fun getCards(page: Int, perPage: Int): Result<CardsResponse> =
+        withContext(ioDispatcher) {
+            runCatching { contentService.getCards(page, perPage) }
+        }
 }
