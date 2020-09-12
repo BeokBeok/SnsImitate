@@ -5,6 +5,10 @@ android {
     defaultConfig {
         applicationId AndroidConfig.APP_ID
     }
+
+    buildFeatures {
+        dataBinding = true
+    }
 }
 
 dependencies {
