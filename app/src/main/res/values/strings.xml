@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">SnsImitate</string>
+    <string name="hint_nickname">닉네임</string>
+    <string name="hint_password">패스워드</string>
+    <string name="hint_introduce">소개</string>
+    <string name="title_sign_up">회원 가입</string>
+    <string name="title_sign_in">로그인</string>
+    <string name="msg_invalidate_nickname">닉네임이 올바르지 않습니다.</string>
+    <string name="msg_invalidate_password">패스워드가 올바르지 않습니다.</string>
 </resources>

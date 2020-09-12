@@ -3,6 +3,7 @@ package com.beok.snsimitate.auth
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
@@ -18,6 +19,21 @@ class AuthActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setupBinding()
+        setupObserver()
+    }
+
+    private fun setupObserver() {
+        viewModel.toastMsg.observe(this, {
+            if (it.isResource) {
+                Toast.makeText(this, getString(it.message.toInt()), Toast.LENGTH_SHORT).show()
+                return@observe
+            }
+            Toast.makeText(this, it.message, Toast.LENGTH_SHORT).show()
+        })
+    }
+
+    private fun setupBinding() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_auth)
         binding.lifecycleOwner = this
         binding.vm = viewModel.apply {

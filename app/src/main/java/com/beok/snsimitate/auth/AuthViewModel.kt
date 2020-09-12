@@ -6,15 +6,17 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.beok.common.model.AuthRequest
+import com.beok.common.model.ToastMessage
 import com.beok.domain.auth.AuthRepository
+import com.beok.snsimitate.R
 import kotlinx.coroutines.launch
 
 class AuthViewModel @ViewModelInject constructor(
     private val authRepository: AuthRepository
 ) : ViewModel() {
 
-    private val _errMsg = MutableLiveData<String>()
-    val errMsg: LiveData<String> get() = _errMsg
+    private val _toastMsg = MutableLiveData<ToastMessage>()
+    val toastMsg: LiveData<ToastMessage> get() = _toastMsg
 
     var isLogin = false
         private set
@@ -37,11 +39,17 @@ class AuthViewModel @ViewModelInject constructor(
 
     private fun isValidAuthRequest(request: AuthRequest): Boolean {
         if (request.isNotValidNickname()) {
-            _errMsg.value = "닉네임이 올바르지 않습니다."
+            _toastMsg.value = ToastMessage(
+                isResource = true,
+                message = R.string.msg_invalidate_nickname.toString()
+            )
             return true
         }
         if (request.isNotValidPassword()) {
-            _errMsg.value = "패스워드가 올바르지 않습니다."
+            _toastMsg.value = ToastMessage(
+                isResource = true,
+                message = R.string.msg_invalidate_password.toString()
+            )
             return true
         }
         return false
