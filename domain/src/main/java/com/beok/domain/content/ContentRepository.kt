@@ -1,5 +1,6 @@
 package com.beok.domain.content
 
+import com.beok.domain.content.entity.CardsResponse
 import com.beok.domain.content.entity.HomeResponse
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -13,5 +14,9 @@ class ContentRepository @Inject constructor(
 
     override suspend fun getHome(): Result<HomeResponse> = withContext(ioDispatcher) {
         runCatching { contentService.getHome() }
+    }
+
+    override suspend fun getCards(): Result<CardsResponse> = withContext(ioDispatcher) {
+        runCatching { contentService.getCards() }
     }
 }
