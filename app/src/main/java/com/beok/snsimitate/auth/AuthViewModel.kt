@@ -7,14 +7,12 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.beok.common.model.AuthRequest
 import com.beok.common.model.ToastMessage
-import com.beok.common.util.Prefs
 import com.beok.domain.auth.AuthRepository
 import com.beok.snsimitate.R
 import kotlinx.coroutines.launch
 
 class AuthViewModel @ViewModelInject constructor(
-    private val authRepository: AuthRepository,
-    private val prefs: Prefs
+    private val authRepository: AuthRepository
 ) : ViewModel() {
 
     private val _toastMsg = MutableLiveData<ToastMessage>()
@@ -59,10 +57,7 @@ class AuthViewModel @ViewModelInject constructor(
                 ToastMessage(isResource = true, message = R.string.msg_sign_in_failed.toString())
             return@launch
         }
-        if (result.ok) {
-            prefs.userId = result.userId
-            _isSuccessLogin.value = true
-        }
+        if (result.ok) _isSuccessLogin.value = true
     }
 
     private fun isValidAuthRequest(request: AuthRequest): Boolean {

@@ -50,7 +50,5 @@ dependencies {
 
     implementation Dependencies.COROUTINE
 
-    implementation JetpackDependencies.PREFERENCE_KTX
-
     implementation JetpackDependencies.ACTIVITY_KTX
 }
