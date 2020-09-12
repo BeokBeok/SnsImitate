@@ -8,6 +8,8 @@ android {
 }
 
 dependencies {
+    implementation project(":domain")
+
     implementation Dependencies.CONSTRAINT_LAYOUT
 
     implementation NetworkDependencies.RETROFIT
