@@ -9,6 +9,7 @@
         tools:context=".home.HomeActivity">
 
         <androidx.appcompat.widget.Toolbar
+            android:id="@+id/tb_home"
             android:layout_width="0dp"
             android:layout_height="?attr/actionBarSize"
             app:layout_constraintEnd_toEndOf="parent"
@@ -54,6 +55,39 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.appcompat.widget.Toolbar>
+
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tb_home">
+
+            <androidx.viewpager.widget.ViewPager
+                android:id="@+id/vp_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/tl_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <com.google.android.material.tabs.TabItem
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="홈" />
+
+                    <com.google.android.material.tabs.TabItem
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="사진" />
+
+                </com.google.android.material.tabs.TabLayout>
+
+            </androidx.viewpager.widget.ViewPager>
+        </FrameLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

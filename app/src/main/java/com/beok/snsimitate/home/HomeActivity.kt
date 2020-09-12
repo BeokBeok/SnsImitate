@@ -14,6 +14,13 @@ class HomeActivity : BaseActivity<ActivityHomeBinding>(R.layout.activity_home) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setupClickListener()
+        setupViewPager()
+    }
+
+    private fun setupViewPager() {
+        val tabTitles = listOf(getString(R.string.title_home), getString(R.string.title_cards))
+        binding.vpContent.adapter = HomeViewPagerAdapter(supportFragmentManager, tabTitles)
+        binding.tlContent.setupWithViewPager(binding.vpContent)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

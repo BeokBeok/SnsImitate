@@ -12,4 +12,6 @@
     <string name="msg_login_success">로그인에 성공하였습니다.</string>
     <string name="title_login">로그인</string>
     <string name="title_logout">로그아웃</string>
+    <string name="title_home">홈</string>
+    <string name="title_cards">카드</string>
 </resources>
