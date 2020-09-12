@@ -23,6 +23,8 @@ dependencies {
     implementation NetworkDependencies.MOSHI_KOTLIN
     kapt NetworkDependencies.MOSHI_KOTLIN_CODEGEN
 
+    implementation JetpackDependencies.ACTIVITY_KTX
+
     testImplementation TestDependencies.JUNIT_JUPITER
     testImplementation TestDependencies.ASSERTJ_CORE
 }
