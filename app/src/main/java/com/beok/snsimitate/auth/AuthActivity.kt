@@ -5,22 +5,26 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.viewModels
-import androidx.appcompat.app.AppCompatActivity
-import androidx.databinding.DataBindingUtil
+import com.beok.common.base.BaseActivity
 import com.beok.snsimitate.R
 import com.beok.snsimitate.databinding.ActivityAuthBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class AuthActivity : AppCompatActivity() {
+class AuthActivity : BaseActivity<ActivityAuthBinding>(R.layout.activity_auth) {
 
-    private lateinit var binding: ActivityAuthBinding
     private val viewModel by viewModels<AuthViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setupBinding()
+        setupViewModel()
         setupObserver()
+    }
+
+    private fun setupViewModel() {
+        binding.vm = viewModel.apply {
+            setupLoginMode(intent.getBooleanExtra(AUTH_IS_LOGIN, false))
+        }
     }
 
     private fun setupObserver() {
@@ -37,14 +41,6 @@ class AuthActivity : AppCompatActivity() {
                 finish()
             }
         })
-    }
-
-    private fun setupBinding() {
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_auth)
-        binding.lifecycleOwner = this
-        binding.vm = viewModel.apply {
-            setupLoginMode(intent.getBooleanExtra(AUTH_IS_LOGIN, false))
-        }
     }
 
     companion object {
