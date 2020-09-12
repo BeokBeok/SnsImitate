@@ -67,7 +67,7 @@ class AuthViewModel @ViewModelInject constructor(
             toastMessage.value =
                 ToastMessage(
                     isResource = true,
-                    message = R.string.msg_invalidate_nickname.toString()
+                    message = R.string.msg_invalid_nickname.toString()
                 )
             return true
         }
@@ -75,7 +75,7 @@ class AuthViewModel @ViewModelInject constructor(
             toastMessage.value =
                 ToastMessage(
                     isResource = true,
-                    message = R.string.msg_invalidate_password.toString()
+                    message = R.string.msg_invalid_password.toString()
                 )
             return true
         }
