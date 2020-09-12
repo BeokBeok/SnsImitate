@@ -15,14 +15,14 @@ android {
 }
 
 dependencies {
-    implementation Dependencies.KOTLIN_STDLIB
-    implementation Dependencies.CORE_KTX
     implementation Dependencies.CONSTRAINT_LAYOUT
 
-    implementation JetpackDependencies.HILT_ANDROID
-    implementation JetpackDependencies.DAGGER_HILT_LIFECYCLE_VM
-    kapt JetpackDependencies.HILT_ANDROID_COMPILER
-    kapt JetpackDependencies.HILT_COMPILER
+    implementation NetworkDependencies.RETROFIT
+    implementation NetworkDependencies.LOGGING_INTERCEPTOR
+
+    implementation NetworkDependencies.CONVERTER_MOSHI
+    implementation NetworkDependencies.MOSHI_KOTLIN
+    kapt NetworkDependencies.MOSHI_KOTLIN_CODEGEN
 
     testImplementation TestDependencies.JUNIT_JUPITER
     testImplementation TestDependencies.ASSERTJ_CORE
