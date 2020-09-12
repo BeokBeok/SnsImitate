@@ -7,10 +7,10 @@ import com.squareup.moshi.JsonClass
 data class HomeResponse(
 
 	@Json(name = "popular_users")
-	val popularUsers: List<PopularUsersItem> = emptyList(),
+	val popularUsers: List<UsersItem> = emptyList(),
 
 	@Json(name = "popular_cards")
-	val popularCards: List<PopularCardsItem> = emptyList(),
+	val popularCards: List<CardsItem> = emptyList(),
 
 	@Json(name = "ok")
 	val ok: Boolean = false

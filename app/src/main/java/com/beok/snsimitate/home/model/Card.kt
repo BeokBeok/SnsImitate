@@ -1,6 +1,6 @@
 package com.beok.snsimitate.home.model
 
-import com.beok.domain.content.entity.PopularCardsItem
+import com.beok.domain.content.entity.CardsItem
 
 data class Card(
     val id: Int = -1,
@@ -8,4 +8,4 @@ data class Card(
     val description: String = "",
 )
 
-fun PopularCardsItem.mapToVo() = Card(id = id, imgUrl = imgUrl, description = description)
+fun CardsItem.mapToVo() = Card(id = id, imgUrl = imgUrl, description = description)
