@@ -31,6 +31,12 @@ class AuthActivity : AppCompatActivity() {
             }
             Toast.makeText(this, it.message, Toast.LENGTH_SHORT).show()
         })
+        viewModel.isSuccessLogin.observe(this, {
+            if (it) {
+                setResult(RESULT_OK)
+                finish()
+            }
+        })
     }
 
     private fun setupBinding() {

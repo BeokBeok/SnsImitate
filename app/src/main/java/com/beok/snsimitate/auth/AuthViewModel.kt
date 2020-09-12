@@ -7,16 +7,21 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.beok.common.model.AuthRequest
 import com.beok.common.model.ToastMessage
+import com.beok.common.util.Prefs
 import com.beok.domain.auth.AuthRepository
 import com.beok.snsimitate.R
 import kotlinx.coroutines.launch
 
 class AuthViewModel @ViewModelInject constructor(
-    private val authRepository: AuthRepository
+    private val authRepository: AuthRepository,
+    private val prefs: Prefs
 ) : ViewModel() {
 
     private val _toastMsg = MutableLiveData<ToastMessage>()
     val toastMsg: LiveData<ToastMessage> get() = _toastMsg
+
+    private val _isSuccessLogin = MutableLiveData<Boolean>()
+    val isSuccessLogin: LiveData<Boolean> get() = _isSuccessLogin
 
     var isLogin = false
         private set
@@ -34,8 +39,31 @@ class AuthViewModel @ViewModelInject constructor(
             val request = AuthRequest(nickname = nickName, introduction = introduce, pwd = password)
             if (isValidAuthRequest(request)) return@launch
             val result = authRepository.signUp(request).getOrNull()
-            println()
+            if (result == null) {
+                _toastMsg.value =
+                    ToastMessage(
+                        isResource = true,
+                        message = R.string.msg_sign_up_failed.toString()
+                    )
+                return@launch
+            }
+            if (result.ok) doSignIn(nickName, password)
         }
+
+    private fun doSignIn(nickName: String, password: String) = viewModelScope.launch {
+        val request = AuthRequest(nickname = nickName, pwd = password)
+        if (isValidAuthRequest(request)) return@launch
+        val result = authRepository.signIn(request).getOrNull()
+        if (result == null) {
+            _toastMsg.value =
+                ToastMessage(isResource = true, message = R.string.msg_sign_in_failed.toString())
+            return@launch
+        }
+        if (result.ok) {
+            prefs.userId = result.userId
+            _isSuccessLogin.value = true
+        }
+    }
 
     private fun isValidAuthRequest(request: AuthRequest): Boolean {
         if (request.isNotValidNickname()) {
@@ -53,12 +81,5 @@ class AuthViewModel @ViewModelInject constructor(
             return true
         }
         return false
-    }
-
-    private fun doSignIn(nickName: String, password: String) = viewModelScope.launch {
-        val request = AuthRequest(nickname = nickName, pwd = password)
-        if (isValidAuthRequest(request)) return@launch
-        val result = authRepository.signIn(request).getOrNull()
-        println()
     }
 }
