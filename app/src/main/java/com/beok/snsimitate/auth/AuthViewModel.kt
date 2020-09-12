@@ -3,22 +3,19 @@ package com.beok.snsimitate.auth
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.beok.common.base.BaseViewModel
 import com.beok.common.model.AuthRequest
 import com.beok.common.model.ToastMessage
-import com.beok.domain.auth.AuthRepository
+import com.beok.domain.auth.AuthDataSource
 import com.beok.snsimitate.R
 import com.beok.snsimitate.auth.model.Auth
 import com.beok.snsimitate.auth.model.mapToVo
 import kotlinx.coroutines.launch
 
 class AuthViewModel @ViewModelInject constructor(
-    private val authRepository: AuthRepository
-) : ViewModel() {
-
-    private val _toastMsg = MutableLiveData<ToastMessage>()
-    val toastMsg: LiveData<ToastMessage> get() = _toastMsg
+    private val authRepository: AuthDataSource
+) : BaseViewModel() {
 
     private val _isSuccessLogin = MutableLiveData<Boolean>()
     val isSuccessLogin: LiveData<Boolean> get() = _isSuccessLogin
@@ -53,12 +50,12 @@ class AuthViewModel @ViewModelInject constructor(
 
     private fun checkErrorMessageIfExist(result: Auth?, defaultErrMessageResource: Int): Boolean {
         if (result == null) {
-            _toastMsg.value =
+            toastMessage.value =
                 ToastMessage(isResource = true, message = defaultErrMessageResource.toString())
             return true
         }
         if (result.message.isNotEmpty()) {
-            _toastMsg.value = ToastMessage(isResource = false, message = result.message)
+            toastMessage.value = ToastMessage(isResource = false, message = result.message)
             return true
         }
         return false
@@ -66,7 +63,7 @@ class AuthViewModel @ViewModelInject constructor(
 
     private fun isValidAuthRequest(request: AuthRequest): Boolean {
         if (request.isNotValidNickname()) {
-            _toastMsg.value =
+            toastMessage.value =
                 ToastMessage(
                     isResource = true,
                     message = R.string.msg_invalidate_nickname.toString()
@@ -74,7 +71,7 @@ class AuthViewModel @ViewModelInject constructor(
             return true
         }
         if (request.isNotValidPassword()) {
-            _toastMsg.value =
+            toastMessage.value =
                 ToastMessage(
                     isResource = true,
                     message = R.string.msg_invalidate_password.toString()
