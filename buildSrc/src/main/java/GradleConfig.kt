@@ -25,6 +25,8 @@ object Dependencies {
     const val MATERIAL = "com.google.android.material:material:1.2.1"
     const val CORE_KTX = "androidx.core:core-ktx:1.3.1"
     const val CONSTRAINT_LAYOUT = "androidx.constraintlayout:constraintlayout:2.0.1"
+
+    const val COROUTINE = "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.9"
 }
 
 object TestDependencies {
