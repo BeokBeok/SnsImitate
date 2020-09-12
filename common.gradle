@@ -37,6 +37,8 @@ dependencies {
     implementation Dependencies.KOTLIN_STDLIB
     implementation Dependencies.CORE_KTX
 
+    implementation Dependencies.MATERIAL
+
     implementation JetpackDependencies.HILT_ANDROID
     implementation JetpackDependencies.DAGGER_HILT_LIFECYCLE_VM
     kapt JetpackDependencies.HILT_ANDROID_COMPILER
