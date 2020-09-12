@@ -1,0 +1,27 @@
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'dagger.hilt.android.plugin'
+
+android {
+    compileSdkVersion AndroidConfig.COMPILE_SDK
+
+    defaultConfig {
+        minSdkVersion AndroidConfig.MIN_SDK
+        targetSdkVersion AndroidConfig.COMPILE_SDK
+        versionCode AndroidConfig.VERSION_CODE
+        versionName AndroidConfig.VERSION_NAME
+
+        testInstrumentationRunner AndroidConfig.TEST_INSTRUMENTATION_RUNNER
+    }
+}
+
+dependencies {
+    implementation Dependencies.KOTLIN_STDLIB
+    implementation Dependencies.CORE_KTX
+
+    implementation JetpackDependencies.HILT_ANDROID
+    implementation JetpackDependencies.DAGGER_HILT_LIFECYCLE_VM
+    kapt JetpackDependencies.HILT_ANDROID_COMPILER
+    kapt JetpackDependencies.HILT_COMPILER
+}
