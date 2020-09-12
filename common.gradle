@@ -24,4 +24,11 @@ dependencies {
     implementation JetpackDependencies.DAGGER_HILT_LIFECYCLE_VM
     kapt JetpackDependencies.HILT_ANDROID_COMPILER
     kapt JetpackDependencies.HILT_COMPILER
+
+    implementation NetworkDependencies.RETROFIT
+    implementation NetworkDependencies.LOGGING_INTERCEPTOR
+
+    implementation NetworkDependencies.CONVERTER_MOSHI
+    implementation NetworkDependencies.MOSHI_KOTLIN
+    kapt NetworkDependencies.MOSHI_KOTLIN_CODEGEN
 }
