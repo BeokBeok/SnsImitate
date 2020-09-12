@@ -1,8 +1,10 @@
 package com.beok.common.ext
 
+import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.beok.common.base.BaseAdapter
+import com.bumptech.glide.Glide
 
 @BindingAdapter("bind_replaceItem")
 fun replaceItem(recyclerView: RecyclerView, item: List<Any>?) {
@@ -13,4 +15,12 @@ fun replaceItem(recyclerView: RecyclerView, item: List<Any>?) {
         replaceItems(item)
         notifyDataSetChanged()
     }
+}
+
+@BindingAdapter("bind_imageUrlAsGlide")
+fun showImageForGlide(imageView: ImageView, imageUrl: String) {
+    Glide.with(imageView)
+        .load(imageUrl)
+        .error(android.R.drawable.ic_menu_gallery)
+        .into(imageView)
 }

@@ -14,4 +14,6 @@
     <string name="msg_sign_up_failed">회원 가입에 실패하였습니다.\n다시 시도해주세요.</string>
     <string name="msg_sign_in_failed">로그인에 실패하였습니다.\n다시 시도해주세요.</string>
     <string name="msg_login_success">로그인에 성공하였습니다.</string>
+    <string name="title_popular_cards">인기 사진</string>
+    <string name="title_popular_users">인기 유저</string>
 </resources>

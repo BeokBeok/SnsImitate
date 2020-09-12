@@ -8,7 +8,9 @@ import com.beok.common.base.BaseActivity
 import com.beok.snsimitate.R
 import com.beok.snsimitate.auth.AuthActivity
 import com.beok.snsimitate.databinding.ActivityHomeBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class HomeActivity : BaseActivity<ActivityHomeBinding>(R.layout.activity_home) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
