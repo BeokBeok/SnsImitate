@@ -1,4 +1,4 @@
-package com.beok.snsimitate.home.model
+package com.beok.snsimitate.card.model
 
 import com.beok.domain.content.entity.CardsItem
 

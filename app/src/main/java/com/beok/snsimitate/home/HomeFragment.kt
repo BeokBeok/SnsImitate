@@ -7,8 +7,8 @@ import com.beok.common.base.BaseAdapter
 import com.beok.common.base.BaseFragment
 import com.beok.snsimitate.BR
 import com.beok.snsimitate.R
+import com.beok.snsimitate.card.model.Card
 import com.beok.snsimitate.databinding.FragmentHomeBinding
-import com.beok.snsimitate.home.model.Card
 import com.beok.snsimitate.home.model.User
 import dagger.hilt.android.AndroidEntryPoint
 

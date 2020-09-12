@@ -9,6 +9,7 @@
     <string name="title_home">홈</string>
     <string name="title_cards">카드</string>
     <string name="msg_invalid_home_data">홈 데이터를 가져오지 못했습니다.\n다시 시도해주세요.</string>
+    <string name="msg_invalid_card_data">사진 데이터를 가져오지 못했습니다.\n다시 시도해주세요.</string>
     <string name="msg_invalid_nickname">닉네임이 올바르지 않습니다.</string>
     <string name="msg_invalid_password">패스워드가 올바르지 않습니다.</string>
     <string name="msg_sign_up_failed">회원 가입에 실패하였습니다.\n다시 시도해주세요.</string>

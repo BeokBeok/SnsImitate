@@ -3,7 +3,7 @@ package com.beok.snsimitate
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
-import com.beok.snsimitate.home.CardsFragment
+import com.beok.snsimitate.card.CardsFragment
 import com.beok.snsimitate.home.HomeFragment
 
 class MainViewPagerAdapter(fm: FragmentManager, private val tabTitles: List<String>) :

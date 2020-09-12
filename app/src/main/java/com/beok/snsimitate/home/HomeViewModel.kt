@@ -9,7 +9,7 @@ import com.beok.common.ext.safeLaunch
 import com.beok.common.model.ToastMessage
 import com.beok.domain.content.ContentDataSource
 import com.beok.snsimitate.R
-import com.beok.snsimitate.home.model.Card
+import com.beok.snsimitate.card.model.Card
 import com.beok.snsimitate.home.model.User
 import com.beok.snsimitate.home.model.mapToVo
 
