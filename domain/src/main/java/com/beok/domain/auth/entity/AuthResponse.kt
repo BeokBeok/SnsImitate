@@ -11,6 +11,6 @@ data class AuthResponse(
     @Json(name = "ok")
     val ok: Boolean = false,
 
-    @Json(name = "msg")
-    val msg: String? = null
+    @Json(name = "error_msg")
+    val error_msg: String? = null
 )
