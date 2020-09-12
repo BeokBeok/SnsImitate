@@ -1,6 +1,8 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'dagger.hilt.android.plugin'
 
 android {
     compileSdkVersion AndroidConfig.COMPILE_SDK
@@ -27,6 +29,12 @@ dependencies {
     implementation Dependencies.KOTLIN_STDLIB
     implementation Dependencies.CORE_KTX
     implementation Dependencies.CONSTRAINT_LAYOUT
+
+    implementation JetpackDependencies.HILT_ANDROID
+    implementation JetpackDependencies.DAGGER_HILT_LIFECYCLE_VM
+    kapt JetpackDependencies.HILT_ANDROID_COMPILER
+    kapt JetpackDependencies.HILT_COMPILER
+
     testImplementation TestDependencies.JUNIT_JUPITER
     testImplementation TestDependencies.ASSERTJ_CORE
 }
