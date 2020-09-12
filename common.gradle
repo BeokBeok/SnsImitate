@@ -51,4 +51,6 @@ dependencies {
     implementation Dependencies.COROUTINE
 
     implementation JetpackDependencies.ACTIVITY_KTX
+
+    implementation Dependencies.TIMBER
 }
