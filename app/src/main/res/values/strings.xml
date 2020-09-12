@@ -16,4 +16,5 @@
     <string name="msg_login_success">로그인에 성공하였습니다.</string>
     <string name="title_popular_cards">인기 사진</string>
     <string name="title_popular_users">인기 유저</string>
+    <string name="msg_no_content">컨텐츠가 없습니다.</string>
 </resources>
