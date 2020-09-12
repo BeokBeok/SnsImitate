@@ -1,17 +1,16 @@
-package com.beok.snsimitate.home
+package com.beok.snsimitate
 
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.core.view.isVisible
 import com.beok.common.base.BaseActivity
-import com.beok.snsimitate.R
 import com.beok.snsimitate.auth.AuthActivity
-import com.beok.snsimitate.databinding.ActivityHomeBinding
+import com.beok.snsimitate.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class HomeActivity : BaseActivity<ActivityHomeBinding>(R.layout.activity_home) {
+class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,7 +20,7 @@ class HomeActivity : BaseActivity<ActivityHomeBinding>(R.layout.activity_home) {
 
     private fun setupViewPager() {
         val tabTitles = listOf(getString(R.string.title_home), getString(R.string.title_cards))
-        binding.vpContent.adapter = HomeViewPagerAdapter(supportFragmentManager, tabTitles)
+        binding.vpContent.adapter = MainViewPagerAdapter(supportFragmentManager, tabTitles)
         binding.tlContent.setupWithViewPager(binding.vpContent)
     }
 
@@ -35,21 +34,21 @@ class HomeActivity : BaseActivity<ActivityHomeBinding>(R.layout.activity_home) {
     }
 
     private fun setupClickListener() {
-        binding.btnHomeLogin.setOnClickListener {
+        binding.btnMainLogin.setOnClickListener {
             startActivityForResult(AuthActivity.newIntent(this, isLogin = true), REQ_AUTH)
         }
-        binding.btnHomeSignUp.setOnClickListener {
+        binding.btnMainSignUp.setOnClickListener {
             startActivityForResult(AuthActivity.newIntent(this, isLogin = false), REQ_AUTH)
         }
-        binding.btnHomeLogout.setOnClickListener {
+        binding.btnMainLogout.setOnClickListener {
             toggleLogoutComponent(false)
         }
     }
 
     private fun toggleLogoutComponent(isOn: Boolean) {
-        binding.btnHomeSignUp.isVisible = !isOn
-        binding.btnHomeLogin.isVisible = !isOn
-        binding.btnHomeLogout.isVisible = isOn
+        binding.btnMainSignUp.isVisible = !isOn
+        binding.btnMainLogin.isVisible = !isOn
+        binding.btnMainLogout.isVisible = isOn
     }
 
     companion object {

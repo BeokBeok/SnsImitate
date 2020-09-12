@@ -6,10 +6,10 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".home.HomeActivity">
+        tools:context=".main.MainActivity">
 
         <androidx.appcompat.widget.Toolbar
-            android:id="@+id/tb_home"
+            android:id="@+id/tb_main"
             android:layout_width="0dp"
             android:layout_height="?attr/actionBarSize"
             app:layout_constraintEnd_toEndOf="parent"
@@ -22,17 +22,17 @@
                 android:padding="4dp">
 
                 <Button
-                    android:id="@+id/btn_home_login"
+                    android:id="@+id/btn_main_login"
                     style="?android:buttonBarButtonStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/title_sign_in"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@id/btn_home_sign_up"
+                    app:layout_constraintEnd_toStartOf="@id/btn_main_sign_up"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <Button
-                    android:id="@+id/btn_home_sign_up"
+                    android:id="@+id/btn_main_sign_up"
                     style="?android:buttonBarButtonStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -42,7 +42,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <Button
-                    android:id="@+id/btn_home_logout"
+                    android:id="@+id/btn_main_logout"
                     style="?android:buttonBarButtonStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -62,7 +62,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tb_home">
+            app:layout_constraintTop_toBottomOf="@id/tb_main">
 
             <androidx.viewpager.widget.ViewPager
                 android:id="@+id/vp_content"
