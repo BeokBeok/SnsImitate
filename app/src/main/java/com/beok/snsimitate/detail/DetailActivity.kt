@@ -12,6 +12,7 @@ import com.beok.snsimitate.BR
 import com.beok.snsimitate.R
 import com.beok.snsimitate.card.model.Card
 import com.beok.snsimitate.databinding.ActivityDetailBinding
+import com.beok.snsimitate.home.model.User
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -24,6 +25,33 @@ class DetailActivity : BaseActivity<ActivityDetailBinding>(R.layout.activity_det
         setupViewModel()
         setupRecyclerView()
         showContent()
+        setupObserver()
+    }
+
+    private fun setupObserver() {
+        viewModel.selectedItem.observe(this, {
+            when (it) {
+                is User -> {
+                    if (!binding.gDetailCard.isVisible) return@observe
+                    startActivity(
+                        newIntent(
+                            context = this@DetailActivity,
+                            id = it.id,
+                            type = Constant.TYPE_USER
+                        )
+                    )
+                }
+                is Card -> {
+                    startActivity(
+                        newIntent(
+                            context = this@DetailActivity,
+                            id = it.id,
+                            type = Constant.TYPE_CARD
+                        )
+                    )
+                }
+            }
+        })
     }
 
     private fun setupRecyclerView() {

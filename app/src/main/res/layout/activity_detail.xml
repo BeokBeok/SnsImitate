@@ -19,6 +19,7 @@
             android:layout_width="0dp"
             android:layout_height="40dp"
             android:gravity="center_vertical"
+            android:onClick="@{() -> vm.onClick(vm.user)}"
             android:text="@{String.format(@string/content_nickname, vm.user.nickname)}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

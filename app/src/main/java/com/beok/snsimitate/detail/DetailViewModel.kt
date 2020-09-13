@@ -27,6 +27,9 @@ class DetailViewModel @ViewModelInject constructor(
     private val _recommendCards = MutableLiveData<List<Card>>()
     val recommendCards: LiveData<List<Card>> get() = _recommendCards
 
+    private val _selectedItem = MutableLiveData<Any>()
+    val selectedItem: LiveData<Any> get() = _selectedItem
+
     fun fetchCardDetail(id: String) = viewModelScope.safeLaunch(coroutineExceptionHandler) {
         val result = contentRepository.getCardDetail(id).getOrNull()?.mapToVo()
         if (result == null) {
@@ -47,5 +50,9 @@ class DetailViewModel @ViewModelInject constructor(
             return@safeLaunch
         }
         _user.value = result
+    }
+
+    fun onClick(item: Any) {
+        _selectedItem.value = item
     }
 }
