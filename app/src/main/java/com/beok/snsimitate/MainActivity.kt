@@ -3,18 +3,22 @@ package com.beok.snsimitate
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
-import com.beok.common.base.BaseActivity
+import androidx.databinding.DataBindingUtil
 import com.beok.snsimitate.auth.AuthActivity
 import com.beok.snsimitate.databinding.ActivityMainBinding
 import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
+class MainActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setupBinding()
         setupClickListener()
         setupViewPager()
     }
@@ -26,6 +30,13 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
             Toast.makeText(this, getString(R.string.msg_login_success), Toast.LENGTH_SHORT).show()
             toggleLogoutComponent(true)
         }
+    }
+
+    private fun setupBinding() {
+        binding = DataBindingUtil.setContentView<ActivityMainBinding>(this, R.layout.activity_main)
+            .apply {
+                lifecycleOwner = this@MainActivity
+            }
     }
 
     private fun setupViewPager() {

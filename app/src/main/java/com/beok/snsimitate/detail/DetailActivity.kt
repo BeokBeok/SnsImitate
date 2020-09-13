@@ -16,9 +16,10 @@ import com.beok.snsimitate.home.model.User
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class DetailActivity : BaseActivity<ActivityDetailBinding>(R.layout.activity_detail) {
+class DetailActivity :
+    BaseActivity<ActivityDetailBinding, DetailViewModel>(R.layout.activity_detail) {
 
-    private val viewModel by viewModels<DetailViewModel>()
+    override val viewModel by viewModels<DetailViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,7 +29,8 @@ class DetailActivity : BaseActivity<ActivityDetailBinding>(R.layout.activity_det
         setupObserver()
     }
 
-    private fun setupObserver() {
+    override fun setupObserver() {
+        super.setupObserver()
         viewModel.selectedItem.observe(this, {
             when (it) {
                 is User -> {

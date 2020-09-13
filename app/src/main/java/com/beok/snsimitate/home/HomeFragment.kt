@@ -15,9 +15,9 @@ import com.beok.snsimitate.home.model.User
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
+class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(R.layout.fragment_home) {
 
-    private val viewModel by viewModels<HomeViewModel>()
+    override val viewModel by viewModels<HomeViewModel>()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -27,7 +27,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
         setupObserver()
     }
 
-    private fun setupObserver() {
+    override fun setupObserver() {
+        super.setupObserver()
         viewModel.selectedItem.observe(viewLifecycleOwner, {
             it.getContentIfNotHandled()?.let { item ->
                 when (item) {

@@ -15,9 +15,9 @@ import com.beok.snsimitate.detail.DetailActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class CardsFragment : BaseFragment<FragmentCardsBinding>(R.layout.fragment_cards) {
+class CardsFragment : BaseFragment<FragmentCardsBinding, CardsViewModel>(R.layout.fragment_cards) {
 
-    private val viewModel by viewModels<CardsViewModel>()
+    override val viewModel by viewModels<CardsViewModel>()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -25,7 +25,8 @@ class CardsFragment : BaseFragment<FragmentCardsBinding>(R.layout.fragment_cards
         setupObserver()
     }
 
-    private fun setupObserver() {
+    override fun setupObserver() {
+        super.setupObserver()
         viewModel.cards.observe(viewLifecycleOwner, {
             @Suppress("UNCHECKED_CAST")
             (binding.rvCardsContent.adapter as BasePagingAdapter<Card>).submitList(it)
