@@ -18,7 +18,9 @@ fun replaceItem(recyclerView: RecyclerView, item: List<Any>?) {
 }
 
 @BindingAdapter("bind_imageUrlAsGlide")
-fun showImageForGlide(imageView: ImageView, imageUrl: String) {
+fun showImageForGlide(imageView: ImageView, imageUrl: String?) {
+    if (imageUrl.isNullOrEmpty()) return
+
     Glide.with(imageView)
         .load(imageUrl)
         .error(android.R.drawable.ic_menu_gallery)

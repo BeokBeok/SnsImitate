@@ -18,4 +18,6 @@
     <string name="title_popular_cards">인기 사진</string>
     <string name="title_popular_users">인기 유저</string>
     <string name="msg_no_content">컨텐츠가 없습니다.</string>
+    <string name="title_recommend_card">추천 카드</string>
+    <string name="content_nickname">작성자 : %s</string>
 </resources>

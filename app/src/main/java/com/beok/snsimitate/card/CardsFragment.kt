@@ -10,6 +10,7 @@ import com.beok.snsimitate.BR
 import com.beok.snsimitate.R
 import com.beok.snsimitate.card.model.Card
 import com.beok.snsimitate.databinding.FragmentCardsBinding
+import com.beok.snsimitate.detail.DetailActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -28,6 +29,10 @@ class CardsFragment : BaseFragment<FragmentCardsBinding>(R.layout.fragment_cards
         viewModel.cards.observe(viewLifecycleOwner, {
             @Suppress("UNCHECKED_CAST")
             (binding.rvCardsContent.adapter as BasePagingAdapter<Card>).submitList(it)
+        })
+        viewModel.selectedCard.observe(viewLifecycleOwner, {
+            if (it.id == -1) return@observe
+            startActivity(DetailActivity.newIntent(this@CardsFragment.activity, it.id))
         })
     }
 
