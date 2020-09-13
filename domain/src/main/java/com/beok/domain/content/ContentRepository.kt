@@ -3,6 +3,7 @@ package com.beok.domain.content
 import com.beok.domain.content.entity.CardDetailResponse
 import com.beok.domain.content.entity.CardsResponse
 import com.beok.domain.content.entity.HomeResponse
+import com.beok.domain.content.entity.UserResponse
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
@@ -25,5 +26,10 @@ class ContentRepository @Inject constructor(
     override suspend fun getCardDetail(id: String): Result<CardDetailResponse> =
         withContext(ioDispatcher) {
             runCatching { contentService.getCardDetail(id) }
+        }
+
+    override suspend fun getUserDetail(id: String): Result<UserResponse> =
+        withContext(ioDispatcher) {
+            runCatching { contentService.getUserDetail(id) }
         }
 }
