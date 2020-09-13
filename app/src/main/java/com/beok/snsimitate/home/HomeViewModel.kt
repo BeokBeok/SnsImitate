@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.beok.common.base.BaseViewModel
 import com.beok.common.ext.safeLaunch
 import com.beok.common.model.ToastMessage
+import com.beok.common.util.Event
 import com.beok.domain.content.ContentDataSource
 import com.beok.snsimitate.R
 import com.beok.snsimitate.card.model.Card
@@ -23,8 +24,8 @@ class HomeViewModel @ViewModelInject constructor(
     private val _cards = MutableLiveData<List<Card>>()
     val cards: LiveData<List<Card>> get() = _cards
 
-    private val _selectedItem = MutableLiveData<Any>()
-    val selectedItem: LiveData<Any> get() = _selectedItem
+    private val _selectedItem = MutableLiveData<Event<Any>>()
+    val selectedItem: LiveData<Event<Any>> get() = _selectedItem
 
     fun fetchHome() = viewModelScope.safeLaunch(coroutineExceptionHandler) {
         val result = contentRepository.getHome().getOrNull()?.mapToVo()
@@ -38,6 +39,6 @@ class HomeViewModel @ViewModelInject constructor(
     }
 
     fun onClick(item: Any) {
-        _selectedItem.value = item
+        _selectedItem.value = Event(item)
     }
 }

@@ -32,10 +32,16 @@ class CardsFragment : BaseFragment<FragmentCardsBinding>(R.layout.fragment_cards
             (binding.rvCardsContent.adapter as BasePagingAdapter<Card>).submitList(it)
         })
         viewModel.selectedCard.observe(viewLifecycleOwner, {
-            if (it.id == -1) return@observe
-            startActivity(
-                DetailActivity.newIntent(this@CardsFragment.activity, it.id, Constant.TYPE_CARD)
-            )
+            it.getContentIfNotHandled()?.let { card ->
+                if (card.id == -1) return@observe
+                startActivity(
+                    DetailActivity.newIntent(
+                        this@CardsFragment.activity,
+                        card.id,
+                        Constant.TYPE_CARD
+                    )
+                )
+            }
         })
     }
 

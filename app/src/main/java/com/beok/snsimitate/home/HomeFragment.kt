@@ -29,27 +29,33 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
 
     private fun setupObserver() {
         viewModel.selectedItem.observe(viewLifecycleOwner, {
-            when (it) {
-                is User -> {
-                    startActivity(
-                        DetailActivity.newIntent(
-                            context = this@HomeFragment.activity,
-                            id = it.id,
-                            type = Constant.TYPE_USER
-                        )
-                    )
-                }
-                is Card -> {
-                    startActivity(
-                        DetailActivity.newIntent(
-                            context = this@HomeFragment.activity,
-                            id = it.id,
-                            type = Constant.TYPE_CARD
-                        )
-                    )
+            it.getContentIfNotHandled()?.let { item ->
+                when (item) {
+                    is User -> startUserDetailActivity(item)
+                    is Card -> startCardDetailActivity(item)
                 }
             }
         })
+    }
+
+    private fun startCardDetailActivity(item: Card) {
+        startActivity(
+            DetailActivity.newIntent(
+                context = this@HomeFragment.activity,
+                id = item.id,
+                type = Constant.TYPE_CARD
+            )
+        )
+    }
+
+    private fun startUserDetailActivity(item: User) {
+        startActivity(
+            DetailActivity.newIntent(
+                context = this@HomeFragment.activity,
+                id = item.id,
+                type = Constant.TYPE_USER
+            )
+        )
     }
 
     private fun setupRecyclerView() {
