@@ -33,22 +33,12 @@ class DetailActivity : BaseActivity<ActivityDetailBinding>(R.layout.activity_det
             when (it) {
                 is User -> {
                     if (!binding.gDetailCard.isVisible) return@observe
-                    startActivity(
-                        newIntent(
-                            context = this@DetailActivity,
-                            id = it.id,
-                            type = Constant.TYPE_USER
-                        )
-                    )
+                    if (it.id == -1) return@observe
+                    startActivity(newIntent(this, it.id, Constant.TYPE_USER))
                 }
                 is Card -> {
-                    startActivity(
-                        newIntent(
-                            context = this@DetailActivity,
-                            id = it.id,
-                            type = Constant.TYPE_CARD
-                        )
-                    )
+                    if (it.id == -1) return@observe
+                    startActivity(newIntent(this, it.id, Constant.TYPE_CARD))
                 }
             }
         })

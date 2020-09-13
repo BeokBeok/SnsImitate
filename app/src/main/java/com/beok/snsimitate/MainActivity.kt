@@ -19,14 +19,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
         setupViewPager()
     }
 
-    private fun setupViewPager() {
-        val tabTitles = listOf(getString(R.string.title_home), getString(R.string.title_cards))
-        binding.vpContent.adapter = MainViewPagerAdapter(this)
-        TabLayoutMediator(binding.tlContent, binding.vpContent) { tab, position ->
-            tab.text = tabTitles[position]
-        }.attach()
-    }
-
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode != RESULT_OK) return
@@ -34,6 +26,14 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
             Toast.makeText(this, getString(R.string.msg_login_success), Toast.LENGTH_SHORT).show()
             toggleLogoutComponent(true)
         }
+    }
+
+    private fun setupViewPager() {
+        val tabTitles = listOf(getString(R.string.title_home), getString(R.string.title_cards))
+        binding.vpContent.adapter = MainViewPagerAdapter(this)
+        TabLayoutMediator(binding.tlContent, binding.vpContent) { tab, position ->
+            tab.text = tabTitles[position]
+        }.attach()
     }
 
     private fun setupClickListener() {

@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 class BaseViewHolder(
     parent: ViewGroup,
     private val layoutBindingId: Pair<Int, Int>,
-    private val viewModels: Map<Int, ViewModel>? = null
+    private val viewModels: Map<Int, ViewModel>
 ) : RecyclerView.ViewHolder(
     LayoutInflater.from(parent.context)
         .inflate(layoutBindingId.first, parent, false)
@@ -21,7 +21,6 @@ class BaseViewHolder(
         if (item == null) return
         binding.setVariable(layoutBindingId.second, item)
 
-        if (viewModels == null) return
         for (key in viewModels.keys) {
             binding.setVariable(key, viewModels[key])
         }

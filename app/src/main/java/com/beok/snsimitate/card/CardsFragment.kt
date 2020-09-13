@@ -21,7 +21,6 @@ class CardsFragment : BaseFragment<FragmentCardsBinding>(R.layout.fragment_cards
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setupViewModel()
         setupRecyclerView()
         setupObserver()
     }
@@ -34,15 +33,15 @@ class CardsFragment : BaseFragment<FragmentCardsBinding>(R.layout.fragment_cards
         viewModel.selectedCard.observe(viewLifecycleOwner, {
             it.getContentIfNotHandled()?.let { card ->
                 if (card.id == -1) return@observe
-                startActivity(
-                    DetailActivity.newIntent(
-                        this@CardsFragment.activity,
-                        card.id,
-                        Constant.TYPE_CARD
-                    )
-                )
+                startCardDetailActivity(card)
             }
         })
+    }
+
+    private fun startCardDetailActivity(card: Card) {
+        startActivity(
+            DetailActivity.newIntent(this@CardsFragment.activity, card.id, Constant.TYPE_CARD)
+        )
     }
 
     private fun setupRecyclerView() {
@@ -57,9 +56,5 @@ class CardsFragment : BaseFragment<FragmentCardsBinding>(R.layout.fragment_cards
                     oldItem.id == newItem.id
             }
         )
-    }
-
-    private fun setupViewModel() {
-        binding.vm = viewModel
     }
 }

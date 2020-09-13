@@ -40,21 +40,13 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
 
     private fun startCardDetailActivity(item: Card) {
         startActivity(
-            DetailActivity.newIntent(
-                context = this@HomeFragment.activity,
-                id = item.id,
-                type = Constant.TYPE_CARD
-            )
+            DetailActivity.newIntent(this@HomeFragment.activity, item.id, Constant.TYPE_CARD)
         )
     }
 
     private fun startUserDetailActivity(item: User) {
         startActivity(
-            DetailActivity.newIntent(
-                context = this@HomeFragment.activity,
-                id = item.id,
-                type = Constant.TYPE_USER
-            )
+            DetailActivity.newIntent(this@HomeFragment.activity, item.id, Constant.TYPE_USER)
         )
     }
 
