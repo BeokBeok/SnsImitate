@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.DiffUtil
+import com.beok.common.Constant
 import com.beok.common.base.BaseFragment
 import com.beok.common.base.BasePagingAdapter
 import com.beok.snsimitate.BR
@@ -32,7 +33,9 @@ class CardsFragment : BaseFragment<FragmentCardsBinding>(R.layout.fragment_cards
         })
         viewModel.selectedCard.observe(viewLifecycleOwner, {
             if (it.id == -1) return@observe
-            startActivity(DetailActivity.newIntent(this@CardsFragment.activity, it.id))
+            startActivity(
+                DetailActivity.newIntent(this@CardsFragment.activity, it.id, Constant.TYPE_CARD)
+            )
         })
     }
 

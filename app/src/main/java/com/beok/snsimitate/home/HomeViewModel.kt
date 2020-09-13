@@ -23,6 +23,9 @@ class HomeViewModel @ViewModelInject constructor(
     private val _cards = MutableLiveData<List<Card>>()
     val cards: LiveData<List<Card>> get() = _cards
 
+    private val _selectedItem = MutableLiveData<Any>()
+    val selectedItem: LiveData<Any> get() = _selectedItem
+
     fun fetchHome() = viewModelScope.safeLaunch(coroutineExceptionHandler) {
         val result = contentRepository.getHome().getOrNull()?.mapToVo()
         if (result == null) {
@@ -32,5 +35,9 @@ class HomeViewModel @ViewModelInject constructor(
         }
         _users.value = result.popularUsers
         _cards.value = result.popularCards
+    }
+
+    fun onClick(item: Any) {
+        _selectedItem.value = item
     }
 }

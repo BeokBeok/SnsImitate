@@ -3,12 +3,14 @@ package com.beok.snsimitate.home
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
+import com.beok.common.Constant
 import com.beok.common.base.BaseAdapter
 import com.beok.common.base.BaseFragment
 import com.beok.snsimitate.BR
 import com.beok.snsimitate.R
 import com.beok.snsimitate.card.model.Card
 import com.beok.snsimitate.databinding.FragmentHomeBinding
+import com.beok.snsimitate.detail.DetailActivity
 import com.beok.snsimitate.home.model.User
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -22,6 +24,32 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
         setupViewModel()
         setupRecyclerView()
         showContent()
+        setupObserver()
+    }
+
+    private fun setupObserver() {
+        viewModel.selectedItem.observe(viewLifecycleOwner, {
+            when (it) {
+                is User -> {
+                    startActivity(
+                        DetailActivity.newIntent(
+                            context = this@HomeFragment.activity,
+                            id = it.id,
+                            type = Constant.TYPE_USER
+                        )
+                    )
+                }
+                is Card -> {
+                    startActivity(
+                        DetailActivity.newIntent(
+                            context = this@HomeFragment.activity,
+                            id = it.id,
+                            type = Constant.TYPE_CARD
+                        )
+                    )
+                }
+            }
+        })
     }
 
     private fun setupRecyclerView() {

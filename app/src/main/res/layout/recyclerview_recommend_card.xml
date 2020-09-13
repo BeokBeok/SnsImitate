@@ -8,9 +8,6 @@
             name="item"
             type="com.beok.snsimitate.card.model.Card" />
 
-        <variable
-            name="vm"
-            type="com.beok.snsimitate.detail.DetailViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

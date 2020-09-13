@@ -4,6 +4,8 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
+import androidx.core.view.isVisible
+import com.beok.common.Constant
 import com.beok.common.base.BaseActivity
 import com.beok.common.base.BaseAdapter
 import com.beok.snsimitate.BR
@@ -32,7 +34,16 @@ class DetailActivity : BaseActivity<ActivityDetailBinding>(R.layout.activity_det
     }
 
     private fun showContent() {
-        viewModel.fetchCardDetail(intent.getIntExtra(CARD_ID, -1).toString())
+        when (intent.getStringExtra(TYPE)) {
+            Constant.TYPE_USER -> {
+                viewModel.fetchUserDetail(intent.getIntExtra(ID, -1).toString())
+                binding.gDetailCard.isVisible = false
+            }
+            Constant.TYPE_CARD -> {
+                viewModel.fetchCardDetail(intent.getIntExtra(ID, -1).toString())
+                binding.tvDetailUserIntroduction.isVisible = false
+            }
+        }
     }
 
     private fun setupViewModel() {
@@ -40,11 +51,13 @@ class DetailActivity : BaseActivity<ActivityDetailBinding>(R.layout.activity_det
     }
 
     companion object {
-        private const val CARD_ID = "card_id"
+        private const val ID = "id"
+        private const val TYPE = "type"
 
-        fun newIntent(context: Context?, cardId: Int) =
+        fun newIntent(context: Context?, id: Int, type: String) =
             Intent(context, DetailActivity::class.java).apply {
-                putExtra(CARD_ID, cardId)
+                putExtra(ID, id)
+                putExtra(TYPE, type)
             }
     }
 }

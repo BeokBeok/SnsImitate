@@ -7,11 +7,16 @@
         <variable
             name="item"
             type="com.beok.snsimitate.card.model.Card" />
+
+        <variable
+            name="vm"
+            type="com.beok.snsimitate.home.HomeViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:onClick="@{() -> vm.onClick(item)}">
 
         <ImageView
             android:id="@+id/iv_home_cards"

@@ -24,6 +24,16 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <TextView
+            android:id="@+id/tv_detail_user_introduction"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:gravity="center_vertical"
+            android:text="@{String.format(@string/content_introduction, vm.user.introduction)}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_detail_user" />
+
         <ImageView
             android:id="@+id/iv_detail"
             bind_imageUrlAsGlide="@{vm.card.imgUrl}"
@@ -33,7 +43,7 @@
             android:contentDescription="@null"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_detail_user" />
+            app:layout_constraintTop_toBottomOf="@id/tv_detail_user_introduction" />
 
         <TextView
             android:id="@+id/tv_detail_description"
@@ -68,6 +78,12 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_detail_recommend_card" />
+
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/g_detail_card"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:constraint_referenced_ids="iv_detail, tv_detail_description, tv_detail_recommend_card, rv_detail_recommend_card" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

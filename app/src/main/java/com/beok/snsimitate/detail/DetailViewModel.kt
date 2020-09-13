@@ -12,6 +12,7 @@ import com.beok.snsimitate.R
 import com.beok.snsimitate.card.model.Card
 import com.beok.snsimitate.detail.model.mapToVo
 import com.beok.snsimitate.home.model.User
+import com.beok.snsimitate.home.model.mapToVo
 
 class DetailViewModel @ViewModelInject constructor(
     private val contentRepository: ContentDataSource
@@ -36,5 +37,15 @@ class DetailViewModel @ViewModelInject constructor(
         _user.value = result.user
         _card.value = result.card
         _recommendCards.value = result.recommendCards
+    }
+
+    fun fetchUserDetail(id: String) = viewModelScope.safeLaunch(coroutineExceptionHandler) {
+        val result = contentRepository.getUserDetail(id).getOrNull()?.mapToVo()
+        if (result == null) {
+            toastMessage.value =
+                ToastMessage(isResource = true, message = R.string.msg_invalid_user_data.toString())
+            return@safeLaunch
+        }
+        _user.value = result
     }
 }
