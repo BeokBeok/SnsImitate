@@ -7,6 +7,7 @@ import androidx.core.view.isVisible
 import com.beok.common.base.BaseActivity
 import com.beok.snsimitate.auth.AuthActivity
 import com.beok.snsimitate.databinding.ActivityMainBinding
+import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -20,8 +21,10 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
 
     private fun setupViewPager() {
         val tabTitles = listOf(getString(R.string.title_home), getString(R.string.title_cards))
-        binding.vpContent.adapter = MainViewPagerAdapter(supportFragmentManager, tabTitles)
-        binding.tlContent.setupWithViewPager(binding.vpContent)
+        binding.vpContent.adapter = MainViewPagerAdapter(this)
+        TabLayoutMediator(binding.tlContent, binding.vpContent) { tab, position ->
+            tab.text = tabTitles[position]
+        }.attach()
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
