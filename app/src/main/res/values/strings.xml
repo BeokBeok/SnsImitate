@@ -1,13 +1,23 @@
 <resources>
     <string name="app_name">SnsImitate</string>
+
     <string name="hint_nickname">닉네임</string>
     <string name="hint_password">패스워드</string>
     <string name="hint_introduce">소개</string>
+
     <string name="title_sign_up">회원 가입</string>
     <string name="title_sign_in">로그인</string>
     <string name="title_logout">로그아웃</string>
     <string name="title_home">홈</string>
     <string name="title_cards">카드</string>
+    <string name="title_popular_cards">인기 사진</string>
+    <string name="title_popular_users">인기 유저</string>
+    <string name="title_recommend_card">추천 카드</string>
+
+    <string name="content_nickname">작성자 : %s</string>
+    <string name="content_introduction">소개 : %s</string>
+
+    <string name="msg_no_content">컨텐츠가 없습니다.</string>
     <string name="msg_invalid_home_data">홈 데이터를 가져오지 못했습니다.\n다시 시도해주세요.</string>
     <string name="msg_invalid_card_data">사진 데이터를 가져오지 못했습니다.\n다시 시도해주세요.</string>
     <string name="msg_invalid_user_data">유저 데이터를 가져오지 못했습니다.\n다시 시도해주세요.</string>
@@ -16,10 +26,5 @@
     <string name="msg_sign_up_failed">회원 가입에 실패하였습니다.\n다시 시도해주세요.</string>
     <string name="msg_sign_in_failed">로그인에 실패하였습니다.\n다시 시도해주세요.</string>
     <string name="msg_login_success">로그인에 성공하였습니다.</string>
-    <string name="title_popular_cards">인기 사진</string>
-    <string name="title_popular_users">인기 유저</string>
-    <string name="msg_no_content">컨텐츠가 없습니다.</string>
-    <string name="title_recommend_card">추천 카드</string>
-    <string name="content_nickname">작성자 : %s</string>
-    <string name="content_introduction">소개 : %s</string>
+    <string name="msg_logout">로그아웃 되었습니다.</string>
 </resources>

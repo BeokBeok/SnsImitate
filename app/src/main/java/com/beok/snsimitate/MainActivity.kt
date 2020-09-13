@@ -56,6 +56,7 @@ class MainActivity : AppCompatActivity() {
         }
         binding.btnMainLogout.setOnClickListener {
             toggleLogoutComponent(false)
+            Toast.makeText(this, getString(R.string.msg_logout), Toast.LENGTH_SHORT).show()
         }
     }
 
