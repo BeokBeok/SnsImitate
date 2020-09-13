@@ -9,82 +9,87 @@
             type="com.beok.snsimitate.detail.DetailViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="4dp">
+        android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/tv_detail_user"
-            android:layout_width="0dp"
-            android:layout_height="40dp"
-            android:gravity="center_vertical"
-            android:onClick="@{() -> vm.onClick(vm.user)}"
-            android:text="@{String.format(@string/content_nickname, vm.user.nickname)}"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/tv_detail_user_introduction"
-            android:layout_width="0dp"
-            android:layout_height="40dp"
-            android:gravity="center_vertical"
-            android:text="@{String.format(@string/content_introduction, vm.user.introduction)}"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_detail_user" />
-
-        <ImageView
-            android:id="@+id/iv_detail"
-            bind_imageUrlAsGlide="@{vm.card.imgUrl}"
-            android:layout_width="0dp"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:adjustViewBounds="true"
-            android:contentDescription="@null"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_detail_user_introduction" />
+            android:padding="4dp">
 
-        <TextView
-            android:id="@+id/tv_detail_description"
-            android:layout_width="0dp"
-            android:layout_height="40dp"
-            android:ellipsize="end"
-            android:gravity="center"
-            android:maxLines="2"
-            android:text="@{vm.card.description}"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/iv_detail" />
+            <TextView
+                android:id="@+id/tv_detail_user"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:gravity="center_vertical"
+                android:onClick="@{() -> vm.onClick(vm.user)}"
+                android:text="@{String.format(@string/content_nickname, vm.user.nickname)}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/tv_detail_recommend_card"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:background="@android:color/holo_blue_dark"
-            android:gravity="center"
-            android:text="@string/title_recommend_card"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_detail_description" />
+            <TextView
+                android:id="@+id/tv_detail_user_introduction"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:gravity="center_vertical"
+                android:text="@{String.format(@string/content_introduction, vm.user.introduction)}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_detail_user" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_detail_recommend_card"
-            bind_replaceItem="@{vm.recommendCards}"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_detail_recommend_card" />
+            <ImageView
+                android:id="@+id/iv_detail"
+                bind_imageUrlAsGlide="@{vm.card.imgUrl}"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:contentDescription="@null"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_detail_user_introduction" />
 
-        <androidx.constraintlayout.widget.Group
-            android:id="@+id/g_detail_card"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:constraint_referenced_ids="iv_detail, tv_detail_description, tv_detail_recommend_card, rv_detail_recommend_card" />
+            <TextView
+                android:id="@+id/tv_detail_description"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:maxLines="2"
+                android:text="@{vm.card.description}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/iv_detail" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:id="@+id/tv_detail_recommend_card"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@android:color/holo_blue_dark"
+                android:gravity="center"
+                android:text="@string/title_recommend_card"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_detail_description" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_detail_recommend_card"
+                bind_replaceItem="@{vm.recommendCards}"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_detail_recommend_card" />
+
+            <androidx.constraintlayout.widget.Group
+                android:id="@+id/g_detail_card"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:constraint_referenced_ids="iv_detail, tv_detail_description, tv_detail_recommend_card, rv_detail_recommend_card" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 </layout>
