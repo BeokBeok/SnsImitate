@@ -1,4 +1,4 @@
-package com.beok.snsimitate
+package com.beok.snsimitate.main
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
