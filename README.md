@@ -9,7 +9,7 @@
 5. 유저 및 카드 클릭 시 상세 화면 이동
 # 사용 기술
 ## 아키텍쳐
-- MVVM
+- Clean Architecture
 ## Jetpack
 - Hilt
 - Lifecycle
