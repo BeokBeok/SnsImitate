@@ -24,7 +24,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(R.layout.f
         setupViewModel()
         setupRecyclerView()
         showContent()
-        setupObserver()
     }
 
     override fun setupObserver() {

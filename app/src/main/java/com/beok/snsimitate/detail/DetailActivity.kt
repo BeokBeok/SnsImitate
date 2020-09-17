@@ -26,7 +26,6 @@ class DetailActivity :
         setupViewModel()
         setupRecyclerView()
         showContent()
-        setupObserver()
     }
 
     override fun setupObserver() {

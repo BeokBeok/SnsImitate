@@ -22,7 +22,6 @@ class CardsFragment : BaseFragment<FragmentCardsBinding, CardsViewModel>(R.layou
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupRecyclerView()
-        setupObserver()
     }
 
     override fun setupObserver() {
